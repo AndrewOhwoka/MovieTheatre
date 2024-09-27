@@ -59,6 +59,15 @@ public class MovieTheater {
         System.out.println();
     }
 
+    // Retrieve the initial seating chart
+    public List<String> getInitialSeatingChart() {
+        List<String> initialSeatingChart = new ArrayList<>();
+        for (Seat seat : seats) {
+            initialSeatingChart.add(seat.getSeatNumber());
+        }
+        return initialSeatingChart;
+    }
+
     // Find a seat by its number
     private Seat findSeat(String seatNumber) {
         for (Seat seat : seats) {
@@ -120,11 +129,15 @@ public class MovieTheater {
         theater.printSeatingChart();  // Print initial seating chart
 
         // Test seat reservations and cancellations
-        theater.reserveSeat("A05");
-        theater.reserveSeat("B07");
+        theater.reserveSeat("A04");
+        theater.reserveSeat("B05");
         theater.printSeatingChart();  // Show the seating chart after some reservations
 
-        theater.cancelSeat("A05");
+        theater.cancelSeat("A04");
         theater.printSeatingChart();  // Show the seating chart after canceling a reservation
+
+        // Retrieve and print the initial seating chart
+        List<String> initialSeatingChart = theater.getInitialSeatingChart();
+        System.out.println("Initial seating chart: " + initialSeatingChart);
     }
 }
