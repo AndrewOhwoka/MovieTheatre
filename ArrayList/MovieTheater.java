@@ -1,5 +1,4 @@
 package ArrayList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class MovieTheater {
         // Creating the seating chart
         for (char row = 'A'; row <= lastRow; row++) {
             for (int seatNum = 1; seatNum <= seatsPerRow; seatNum++) {
-                String seatNumber = row + String.format("%02d", seatNum);  // Format seat number like A01, A02, etc.
+                String seatNumber = row + String.format("%02d", seatNum);  
                 seats.add(new Seat(seatNumber));
             }
         }
@@ -52,8 +51,8 @@ public class MovieTheater {
         System.out.println("Seating chart for " + theaterName + ":");
         for (Seat seat : seats) {
             System.out.print(seat.getSeatNumber() + (seat.isReserved() ? " [Reserved]" : " [Available]") + " ");
-            if (seat.getSeatNumber().endsWith("10")) {  // Assuming 10 seats per row for formatting
-                System.out.println();  // New line after every row
+            if (seat.getSeatNumber().endsWith("10")) {  
+                System.out.println();  
             }
         }
         System.out.println();
@@ -125,8 +124,8 @@ public class MovieTheater {
 
     // Driver code to test the MovieTheater class
     public static void main(String[] args) {
-        MovieTheater theater = new MovieTheater("Grand Cinema", 3, 10);  // Create a 3-row, 10-seats-per-row theater
-        theater.printSeatingChart();  // Print initial seating chart
+        MovieTheater theater = new MovieTheater("Grand Cinema", 3, 10);  
+        theater.printSeatingChart(); 
 
         // Test seat reservations and cancellations
         theater.reserveSeat("A04");
@@ -134,6 +133,7 @@ public class MovieTheater {
         theater.printSeatingChart();  // Show the seating chart after some reservations
 
         theater.cancelSeat("A04");
+        theater.cancelSeat("B05");
         theater.printSeatingChart();  // Show the seating chart after canceling a reservation
 
         // Retrieve and print the initial seating chart
